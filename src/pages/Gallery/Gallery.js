@@ -1,28 +1,57 @@
-import ImageModal from "../Modal/ImageModal";
+import "./styles.css";
 
-const images = require.context("../../assets/images", true);
-const imageList = images.keys().map((image) => images(image));
+const wildlife_images = require.context("../../assets/wildlife", true);
+const wildlife_imageList = wildlife_images
+  .keys()
+  .map((image) => wildlife_images(image));
 
-const Gallery = ({ setOpenModal, setImage }) => {
-  const handleclickImage = (image, index) => {
-    setOpenModal(true);
-    setImage({
-      image: image,
-      sno: index,
-    });
-  };
+const landscape_images = require.context("../../assets/Landscapes", true);
+const landscape_imageList = landscape_images
+  .keys()
+  .map((image) => landscape_images(image));
+
+const random_images = require.context("../../assets/Random", true);
+const random_imageList = random_images
+  .keys()
+  .map((image) => random_images(image));
+
+const Gallery = () => {
   return (
-    <div>
-      <div className="container-image">
-        {imageList.map((image, index) => (
-          <div key={index} className="images-under-container">
-            <img
-              src={image}
-              alt={`image-${index}`}
-              onClick={() => handleclickImage(image, index)}
-            />
-          </div>
-        ))}
+    <div className="gallary-main">
+      <h3>Tour on Frames Pro</h3>
+      {/* Wildlife */}
+      <div className="container-1">
+        <h4 style={{ textTransform: "uppercase" }}>Wildlife</h4>
+        <div className="container-image">
+          {wildlife_imageList.map((image, index) => (
+            <div key={index} className="images-under-container">
+              <img src={image} alt={`image-${index}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Landscapes */}
+      <div className="container-1">
+        <h4 style={{ textTransform: "uppercase" }}>Landscapes</h4>
+        <div className="container-image">
+          {landscape_imageList.map((image, index) => (
+            <div key={index} className="images-under-container">
+              <img src={image} alt={`image-${index}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Random */}
+      <div className="container-1">
+        <h4 style={{ textTransform: "uppercase" }}>Random</h4>
+        <div className="container-image">
+          {random_imageList.map((image, index) => (
+            <div key={index} className="images-under-container">
+              <img src={image} alt={`image-${index}`} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

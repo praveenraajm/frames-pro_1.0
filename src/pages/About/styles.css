@@ -1,0 +1,47 @@
+.about-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+.about-container img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.about-text-container {
+    background-image: linear-gradient(to bottom right,
+            rgb(157 114 138 / 68%),
+            rgb(173 201 198));
+}
+
+.about-text-container h5 {
+    padding: 48px;
+    font-size: 24px;
+    font-weight: 200;
+    color: #cbcbcb;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 44px;
+    letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 1060px) {
+    .about-text-container h5 {
+        font-size: 18px;
+        padding: 32px;
+        line-height: 38px;
+        letter-spacing: 0.5px;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .about-text-container h5 {
+        font-size: 14px;
+        padding: 24px;
+        line-height: 28px;
+        letter-spacing: 0.5px;
+    }
+
+}
