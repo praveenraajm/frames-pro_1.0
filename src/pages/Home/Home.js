@@ -1,5 +1,6 @@
 import "./style.css";
-import coverImage from "../../assets/cover/DSC02188_copy.jpg";
+import coverImage from "../../assets/Landscapes/IMG_20191007_110318.jpg";
+import OptimizedImage from "../../components/OptimizedImage";
 
 const Home = () => {
   return (
@@ -17,7 +18,7 @@ const Home = () => {
         </h4>
       </div>
       <div className="cover-image-container">
-        <img src={coverImage} alt="cover-image" />
+        <OptimizedImage src={coverImage} alt="cover-image" />
       </div>
     </div>
   );
