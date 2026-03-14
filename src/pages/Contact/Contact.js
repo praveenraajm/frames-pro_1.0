@@ -67,6 +67,12 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -78,14 +84,13 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Submit to Netlify
-      const formElement = e.target;
-      const formDataToSend = new FormData(formElement);
-      
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formDataToSend).toString(),
+        body: encode({
+          "form-name": "contact",
+          ...formData
+        })
       });
 
       if (response.ok) {
@@ -123,9 +128,7 @@ const Contact = () => {
       <div className="contact-content">
         <div className="contact-form-container">
           <h2>Send Me a Message</h2>
-          <form onSubmit={handleSubmit} className="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="contact" />
-            <input type="hidden" name="bot-field" />
+          <form onSubmit={handleSubmit} className="contact-form" name="contact">
             <div className="form-group">
               <label htmlFor="name">
                 Name <span className="required">*</span>
