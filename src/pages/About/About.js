@@ -72,7 +72,6 @@ const About = () => {
                 more event photography assignments including birthdays,
                 engagements, and celebrations.
               </p>
-              \n{" "}
             </div>
           </div>
 
